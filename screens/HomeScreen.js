@@ -9,6 +9,7 @@ import { setDestination, setOrigin } from "../slices/navSlice";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
