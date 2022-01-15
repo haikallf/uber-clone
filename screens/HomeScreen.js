@@ -43,6 +43,7 @@ const HomeScreen = () => {
 
             dispatch(setDestination(null));
           }}
+          fetchDetails={true}
           returnKeyType={"search"}
           enablePoweredByContainer={false}
           minLength={2}
