@@ -38,7 +38,7 @@ const data = [
   },
 ];
 
-const SURGE_CHARGE_RATE = 1.5;
+const SURGE_CHARGE_RATE = 1.4759;
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();
