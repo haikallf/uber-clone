@@ -14,6 +14,8 @@ import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
 import { selectTravelTimeInformation } from "../slices/navSlice";
+import "intl";
+import "intl/locale-data/jsonp/en";
 
 const data = [
   {
@@ -35,6 +37,8 @@ const data = [
     image: "https://links.papareact.com/7pf",
   },
 ];
+
+const SURGE_CHARGE_RATE = 1.5;
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();
@@ -77,12 +81,22 @@ const RideOptionsCard = () => {
               <Text style={tw`text-xl font-bold`}>{item.title}</Text>
               <Text>{travelTimeInfomation?.duration.text} travel time</Text>
             </View>
-            <Text style={tw`text-xl`}>Rp20000</Text>
+            <Text style={tw`text-base`}>
+              {new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              }).format(
+                ((travelTimeInfomation?.duration.value +
+                  SURGE_CHARGE_RATE * item.multiplier) /
+                  100) *
+                  14000
+              )}
+            </Text>
           </TouchableOpacity>
         )}
       />
 
-      <View>
+      <View style={tw`mt-auto border-t border-gray-300`}>
         <TouchableOpacity
           disabled={!selected}
           style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
